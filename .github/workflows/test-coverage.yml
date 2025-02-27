@@ -1,0 +1,78 @@
+name: Test & Coverage
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
+      - converted_to_draft
+  workflow_dispatch:
+    inputs:
+      test_project:
+        description: 'Test project to run (leave empty for all)'
+        required: false
+        default: 'MinimapApi.Tests'
+        type: string
+
+jobs:
+  test_and_coverage:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+    
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test with Coverage
+        run: |
+          TEST_PROJECT="${{ github.event.inputs.test_project || 'MinimapApi.Tests' }}"
+          dotnet test $TEST_PROJECT \
+            -c Release --no-build \
+            /p:CollectCoverage=true \
+            /p:CoverletOutputFormat=lcov \
+            /p:CoverletOutput=./coverage/lcov.info \
+            --logger "trx;LogFileName=testresults.trx"
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
+          flag-name: unit-tests
+
+      - name: Generate Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results
+          path: "**/testresults.trx"
+          reporter: dotnet-trx
+          fail-on-error: true
+
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: ./coverage
+          retention-days: 14 
