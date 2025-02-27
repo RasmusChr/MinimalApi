@@ -50,29 +50,12 @@ jobs:
             -c Release --no-build \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=lcov \
-            /p:CoverletOutput=./coverage/lcov.info \
+            /p:CoverletOutput=${{ github.workspace }}/coverage/lcov.info \
             --logger "trx;LogFileName=testresults.trx"
 
       - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/lcov.info
+          path-to-lcov: ${{ github.workspace }}/coverage/lcov.info
           flag-name: unit-tests
-
-      - name: Generate Test Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Test Results
-          path: "**/testresults.trx"
-          reporter: dotnet-trx
-          fail-on-error: true
-
-      - name: Upload Coverage Artifacts
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-report
-          path: ./coverage
-          retention-days: 14 
