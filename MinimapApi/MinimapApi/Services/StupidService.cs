@@ -2,10 +2,6 @@ namespace MinimapApi.Services;
 
 public class StupidService : IStupidService
 {
-    private static readonly string[] Summaries = {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
     public string GetStupid()
     {
         var firstName = "carl";
@@ -16,5 +12,10 @@ public class StupidService : IStupidService
         var age = currentYear - yearBorn;
         
         return fullName + " is " + age + " years old";
+    }
+
+    public string GetStupid2()
+    {
+        return "Hello";
     }
 }

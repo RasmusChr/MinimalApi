@@ -49,8 +49,7 @@ jobs:
 
       - name: Test with Coverage
         run: |
-          TEST_PROJECT="${{ github.event.inputs.test_project || matrix.test_project }}"
-          dotnet test $TEST_PROJECT \
+          dotnet test MinimapApi \
             -c Release --no-build \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=lcov \
