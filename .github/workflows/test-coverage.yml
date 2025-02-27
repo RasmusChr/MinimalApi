@@ -41,7 +41,7 @@ jobs:
         run: dotnet restore MinimapApi
     
       - name: Build
-        run: dotnet build -c Release --no-restore
+        run: dotnet build MinimapApi -c Release --no-restore
 
       - name: Test with Coverage
         run: |
