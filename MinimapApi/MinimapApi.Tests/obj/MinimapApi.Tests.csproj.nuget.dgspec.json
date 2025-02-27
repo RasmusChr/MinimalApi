@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj": {}
+    "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj": {}
   },
   "projects": {
-    "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj": {
+    "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj",
+        "projectUniqueName": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj",
         "projectName": "MinimapApi.Tests",
-        "projectPath": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj",
+        "projectPath": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi.Tests/MinimapApi.Tests.csproj",
         "packagesPath": "/Users/rasmushanschristensen/.nuget/packages/",
-        "outputPath": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi.Tests/obj/",
+        "outputPath": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rasmushanschristensen/.nuget/NuGet/NuGet.Config"
@@ -20,7 +20,6 @@
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://vismaenterprise.jfrog.io/artifactory/api/nuget/v2/VismaEnterprise-nuget-repository": {}
         },
@@ -28,8 +27,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj": {
-                "projectPath": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj"
+              "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj": {
+                "projectPath": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj"
               }
             }
           }
@@ -100,18 +99,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/rasmushanschristensen/.dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj": {
+    "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj",
+        "projectUniqueName": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj",
         "projectName": "MinimapApi",
-        "projectPath": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj",
+        "projectPath": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/MinimapApi.csproj",
         "packagesPath": "/Users/rasmushanschristensen/.nuget/packages/",
-        "outputPath": "/Users/rasmushanschristensen/Documents/Github/MinimalApi/MinimapApi/MinimapApi/obj/",
+        "outputPath": "/Users/rasmushanschristensen/Documents/Coding/MinimalApi/MinimapApi/MinimapApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rasmushanschristensen/.nuget/NuGet/NuGet.Config"
@@ -120,7 +119,6 @@
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://vismaenterprise.jfrog.io/artifactory/api/nuget/v2/VismaEnterprise-nuget-repository": {}
         },
@@ -173,7 +171,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/rasmushanschristensen/.dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

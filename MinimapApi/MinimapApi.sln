@@ -3,7 +3,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimapApi", "MinimapApi\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimapApi.Tests", "MinimapApi.Tests\MinimapApi.Tests.csproj", "{5B2D7827-6B5C-4E5C-9D0E-F0A5E52A927F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi.Stupid.Tests", "MinimalApi.Stupid.Tests\MinimalApi.Stupid.Tests.csproj", "{8DD64D94-1472-4718-9988-564CC8F56025}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimapApi.Stupid.Tests", "MinimapApi.Stupid.Tests\MinimapApi.Stupid.Tests.csproj", "{8DD64D94-1472-4718-9988-564CC8F56025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
