@@ -13,4 +13,9 @@ public class StupidService : IStupidService
         
         return fullName + " is " + age + " years old";
     }
+
+    public string GetStupid2()
+    {
+        return "Hello";
+    }
 }
