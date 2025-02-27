@@ -45,7 +45,7 @@ jobs:
 
       - name: Test with Coverage
         run: |
-          TEST_PROJECT="${{ github.event.inputs.test_project || 'MinimapApi.Tests' }}"
+          TEST_PROJECT="${{ github.event.inputs.test_project || 'MinimapApi' }}"
           dotnet test $TEST_PROJECT \
             -c Release --no-build \
             /p:CollectCoverage=true \
