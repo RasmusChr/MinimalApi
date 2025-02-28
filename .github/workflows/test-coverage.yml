@@ -57,7 +57,7 @@ jobs:
             --logger "trx;LogFileName=testresults_${{ matrix.test_project }}.trx"
 
       - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info
@@ -70,8 +70,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
           carryforward: "MinimapApi.Tests,MinimapApi.Stupid.Tests"
+          compare-ref: main
