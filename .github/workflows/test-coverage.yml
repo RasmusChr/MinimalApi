@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test_project: ['MinimapApi.Tests', 'MinimapApi.Stupid.Tests']
+        test_project: ['MinimapApi/MinimapApi.Tests', 'MinimapApi/MinimapApi.Stupid.Tests']
       fail-fast: false
     
     steps:
