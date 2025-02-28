@@ -75,4 +75,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
           carryforward: "MinimapApi.Tests,MinimapApi.Stupid.Tests"
-          compare-ref: main
