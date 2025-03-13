@@ -5,6 +5,21 @@ namespace MinimapApi.Tests;
 
 public class WeatherForecastServiceTests
 {
+    
+    [Fact]
+    public void GetForecast_ReturnsFiveForecasts02()
+    {
+        // Arrange
+        var service = new WeatherForecastService();
+
+        // Act
+        var result = service.GetForecast();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(5, result.Count());
+    }
+    
     [Fact]
     public void GetForecast_ReturnsFiveForecasts()
     {
