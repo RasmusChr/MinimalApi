@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        test_project: ['MinimapApi.Tests', 'MinimapApi.Stupid.Tests']
+        test_project: ['MinimapApi/MinimapApi.Tests', 'MinimapApi/MinimapApi.Stupid.Tests']
       fail-fast: false
     
     steps:
@@ -49,7 +49,7 @@ jobs:
 
       - name: Test with Coverage
         run: |
-          dotnet test MinimapApi \
+          dotnet test ${{ matrix.test_project }} \
             -c Release --no-build \
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=lcov \
@@ -58,7 +58,7 @@ jobs:
             --logger "trx;LogFileName=testresults_${{ matrix.test_project }}.trx"
 
       - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
