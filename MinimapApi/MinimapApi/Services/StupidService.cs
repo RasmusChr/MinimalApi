@@ -19,6 +19,20 @@ public class StupidService : IStupidService
         return "Hello";
     }
 
+    public string GetStupid5()
+    {
+        var en = 1;
+        var to = 2;
+        var tre = 3;
+        var fire = 4;
+        var fem = 5;
+        var seks = 6;
+        var syv = 7;
+        var otte = 8;
+        var sum = en + to + tre + fire + fem + seks + syv + otte;
+        return "Summen af tallene er " + sum;
+    }
+
     public string GetStupid3()
     {
         var firstName = "carl";
