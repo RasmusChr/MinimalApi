@@ -13,6 +13,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+*.dll
 
 # Visual Studio files
 .vs/
