@@ -19,4 +19,10 @@ public class WeatherForecastService : IWeatherForecastService
                 Summaries[Random.Shared.Next(Summaries.Length)]
             ));
     }
+    
+    public string setWeather(string weather)
+    {
+        weather += " Sunny";
+        return weather;
+    }
 } 
