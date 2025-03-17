@@ -54,7 +54,6 @@ jobs:
             /p:CollectCoverage=true \
             /p:CoverletOutputFormat=lcov \
             /p:CoverletOutput=${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info \
-            --settings MinimapApi/dotnet-coverage-settings.xml \
             --logger "trx;LogFileName=testresults_${{ matrix.test_project }}.trx"
 
       - name: Upload coverage to Coveralls
