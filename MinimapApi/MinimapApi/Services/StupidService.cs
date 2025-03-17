@@ -18,6 +18,14 @@ public class StupidService : IStupidService
     {
         return "Hello";
     }
+    
+    public string getStupid4()
+    {
+        var firstName = "carl";
+        var LastName = "jakobsen";
+        var fullName = firstName + LastName;
+        return fullName;
+    }
 
 
     public string GetStupid6()
