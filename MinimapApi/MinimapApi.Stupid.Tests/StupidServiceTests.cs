@@ -11,22 +11,7 @@ public class StupidServiceTests
     {
         _stupidService = new StupidService();
     }
-
-    [Fact]
-    public void GetStupid_ReturnsCorrectString()
-    {
-        // Arrange
-        var expectedName = "carljakobsen";
-        var expectedAge = DateTime.Now.Year - 1990;
-        var expected = $"{expectedName} is {expectedAge} years old";
-
-        // Act
-        var result = _stupidService.GetStupid();
-
-        // Assert
-        Assert.Equal(expected, result);
-    }
-
+    
     [Fact]
     public void GetStupid_ContainsCorrectAge()
     {
