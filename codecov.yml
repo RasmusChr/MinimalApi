@@ -1,2 +1,3 @@
 comment:
-  layout: "header, diff, files, footer" # remove "new" from "header" and "footer"
+     layout: "header, files, footer" # remove "new" from "header" and "footer"
+      hide_project_coverage: false # set to false
