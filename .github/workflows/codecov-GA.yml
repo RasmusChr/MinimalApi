@@ -57,3 +57,4 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/Cobertura.xml
           fail_ci_if_error: true
+          codecov_yml_path: .github/codecov.yml
