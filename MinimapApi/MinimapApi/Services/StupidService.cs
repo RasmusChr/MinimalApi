@@ -18,6 +18,21 @@ public class StupidService : IStupidService
     {
         return "Hello";
     }
+    
+    public string GetStupid11()
+    {
+        var firstName = "carl";
+        var firstName1 = "carl";
+        var firstName2 = "carl";
+        var firstName3 = "carl";
+        var LastName = "jakobsen";
+        var fullName = firstName + LastName;
+        var yearBorn = 1990;
+        var currentYear = DateTime.Now.Year;
+        var age = currentYear - yearBorn;
+
+        return fullName + " is " + age + " years old6";
+    }
 
 
     public string GetStupid6()
@@ -32,32 +47,6 @@ public class StupidService : IStupidService
         return fullName + " is " + age + " years old6";
     }
     
-    public string GetStupid7()
-    {
-        var firstName = "carl";
-        var LastName = "jakobsen";
-        var fullName = firstName + LastName;
-        var yearBorn = 1990;
-        var currentYear = DateTime.Now.Year;
-        var age = currentYear - yearBorn;
-            
-        return fullName + " is " + age + " years old6";
-    }
-    
-    public string GetStupid10()
-    {
-        var firstName = "carl";
-        var firstName1 = "carl";
-        var firstName2 = "carl";
-        var firstName3 = "carl";
-        var LastName = "jakobsen";
-        var fullName = firstName + LastName;
-        var yearBorn = 1990;
-        var currentYear = DateTime.Now.Year;
-        var age = currentYear - yearBorn;
-            
-        return fullName + " is " + age + " years old6";
-    }
 
     public string GetStupid3()
     {
