@@ -1,0 +1,53 @@
+name: codeCov
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
+      - converted_to_draft
+  workflow_dispatch:
+    inputs:
+      test_project:
+        description: 'Test project to run (leave empty for all)'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'  # Adjust version as needed
+          
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+        
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build --no-restore
+        
+      - name: Test with coverage
+        run: dotnet test --no-build --collect:"XPlat Code Coverage"
+        
+      - name: Generate coverage report
+        run: |
+          reportgenerator \
+          -reports:**/TestResults/**/coverage.cobertura.xml \
+          -targetdir:coverage \
+          -reporttypes:Cobertura
+          
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/Cobertura.xml
+          fail_ci_if_error: true
