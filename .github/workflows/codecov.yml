@@ -24,19 +24,13 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'  # Adjust version as needed
+          dotnet-version: '8.x'  # Adjust version as needed
           
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.26
         
-      - name: Restore dependencies
-        run: dotnet restore
-        
-      - name: Build
-        run: dotnet build --no-restore
-        
       - name: Test with coverage
-        run: dotnet test --no-build --collect:"XPlat Code Coverage"
+        run: dotnet test MinimapApi --configuration Release --verbosity normal --logger trx --collect:"XPlat Code Coverage"
         
       - name: Generate coverage report
         run: |
