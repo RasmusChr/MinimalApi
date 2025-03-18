@@ -30,7 +30,17 @@ jobs:
         run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.26
         
       - name: Test with coverage
-        run: dotnet test MinimapApi --configuration Release --verbosity normal --logger trx --collect:"XPlat Code Coverage"
+        id: test
+        run: dotnet test MinimapApi --configuration Release --verbosity normal --logger "trx;LogFileName=testresults.trx" --collect:"XPlat Code Coverage"
+        
+      - name: Test Report
+        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5 # 1.9.1
+        if: always()
+        with:
+          name: Unit Test
+          path: "**/testresults.trx"
+          reporter: dotnet-trx
+          fail-on-error: true
         
       - name: Generate coverage report
         run: |
