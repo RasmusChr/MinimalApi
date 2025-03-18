@@ -18,6 +18,21 @@ public class WeatherForecastServiceTests
         Assert.NotNull(result);
         Assert.Equal(5, result.Count());
     }
+    
+    [Fact]
+    public void GetForecast_ReturnsFiveForecasts2()
+    {
+        // Arrange
+        var service = new WeatherForecastService();
+
+        // Act
+        var result = service.GetForecast2();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(5, result.Count());
+    }
+
 
     [Fact]
     public void GetForecast_ReturnsValidForecasts()
