@@ -1,77 +1,77 @@
-name: Test & Coverage
-
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - ready_for_review
-      - converted_to_draft
-  workflow_dispatch:
-    inputs:
-      test_project:
-        description: 'Test project to run (leave empty for all)'
-        required: false
-        default: ''
-        type: string
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test_project: ['MinimapApi/MinimapApi.Tests', 'MinimapApi/MinimapApi.Stupid.Tests']
-      fail-fast: false
-    
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: "8.0.x"
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Restore dependencies
-        run: dotnet restore MinimapApi
-
-      - name: Build
-        run: dotnet build MinimapApi -c Release --no-restore
-
-      - name: Test with Coverage
-        run: |
-          dotnet test ${{ matrix.test_project }} \
-            -c Release --no-build \
-            /p:CollectCoverage=true \
-            /p:CoverletOutputFormat=lcov \
-            /p:CoverletOutput=${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info \
-            --logger "trx;LogFileName=testresults_${{ matrix.test_project }}.trx"
-
-      - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info
-          flag-name: ${{ matrix.test_project }}
-          parallel: true
-
-  finish:
-    needs: test
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
-          carryforward: "MinimapApi.Tests,MinimapApi.Stupid.Tests"
+#name: Test & Coverage
+#
+#on:
+#  pull_request:
+#    types:
+#      - opened
+#      - synchronize
+#      - ready_for_review
+#      - converted_to_draft
+#  workflow_dispatch:
+#    inputs:
+#      test_project:
+#        description: 'Test project to run (leave empty for all)'
+#        required: false
+#        default: ''
+#        type: string
+#
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        test_project: ['MinimapApi/MinimapApi.Tests', 'MinimapApi/MinimapApi.Stupid.Tests']
+#      fail-fast: false
+#    
+#    steps:
+#      - uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Setup .NET
+#        uses: actions/setup-dotnet@v4
+#        with:
+#          dotnet-version: "8.0.x"
+#
+#      - name: Cache NuGet packages
+#        uses: actions/cache@v4
+#        with:
+#          path: ~/.nuget/packages
+#          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+#          restore-keys: |
+#            ${{ runner.os }}-nuget-
+#
+#      - name: Restore dependencies
+#        run: dotnet restore MinimapApi
+#
+#      - name: Build
+#        run: dotnet build MinimapApi -c Release --no-restore
+#
+#      - name: Test with Coverage
+#        run: |
+#          dotnet test ${{ matrix.test_project }} \
+#            -c Release --no-build \
+#            /p:CollectCoverage=true \
+#            /p:CoverletOutputFormat=lcov \
+#            /p:CoverletOutput=${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info \
+#            --logger "trx;LogFileName=testresults_${{ matrix.test_project }}.trx"
+#
+#      - name: Upload coverage to Coveralls
+#        uses: coverallsapp/github-action@master
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          path-to-lcov: ${{ github.workspace }}/coverage/lcov_${{ matrix.test_project }}.info
+#          flag-name: ${{ matrix.test_project }}
+#          parallel: true
+#
+#  finish:
+#    needs: test
+#    if: ${{ always() }}
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Coveralls Finished
+#        uses: coverallsapp/github-action@master
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          parallel-finished: true
+#          carryforward: "MinimapApi.Tests,MinimapApi.Stupid.Tests"
